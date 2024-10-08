@@ -12,5 +12,7 @@ namespace FootballScoreboard.Services.Interfaces
     {
         void StartGame(string homeTeam, string awayTeam);
         void FinishGame(string homeTeam, string awayTeam);
+        List<Game> GetSummary();
+
     }
 }
