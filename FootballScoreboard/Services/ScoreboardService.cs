@@ -28,7 +28,7 @@ namespace FootballScoreboard.Services
         {
 
 
-            return new List<Game>();
+            return gameRepository.GetAllGames();
         }
     }
 }

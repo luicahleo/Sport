@@ -17,5 +17,10 @@ namespace FootballScoreboard.Repositories
         {
             games.Add(game);
         }
+
+        public List<Game> GetAllGames()
+        {
+            return games;
+        }
     }
 }

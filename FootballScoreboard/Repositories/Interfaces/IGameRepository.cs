@@ -11,6 +11,7 @@ namespace FootballScoreboard.Repositories.Interfaces
     public interface IGameRepository
     {
         void AddGame(Game game);
+        List<Game> GetAllGames();
 
     }
 }
