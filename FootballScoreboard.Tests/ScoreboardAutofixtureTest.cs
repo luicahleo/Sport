@@ -25,6 +25,7 @@ public class ScoreboardAutofixtureTest
         repository = new InMemoryGameRepository();
         scoreboard = new ScoreboardService(repository);
 
+        fixture.Customize(new FootballTeamCustomization());
     }
 
     [Fact]
@@ -34,6 +35,11 @@ public class ScoreboardAutofixtureTest
         string awayTeam = fixture.Create<string>();
 
         scoreboard.StartGame(homeTeam, awayTeam);
+
+        while (homeTeam == awayTeam)
+        {
+            awayTeam = fixture.Create<string>();
+        }
 
         // Assert: El marcador debería tener un juego con puntuación inicial de 0-0
         var summary = scoreboard.GetSummary();
