@@ -53,5 +53,15 @@ public class ScoreboardAutofixtureTest
     [Fact]
     public void FinishGame_RemovesGameFromScoreboard()
     {
+        string homeTeam = fixture.Create<string>();
+        string awayTeam = fixture.Create<string>();
+
+        //Iniciamos y luego lo finalizamos
+        scoreboard.StartGame(homeTeam, awayTeam);
+        scoreboard.FinishGame(homeTeam, awayTeam);
+
+        // Assert: El marcador debería estar vacío
+        var summary = scoreboard.GetSummary();
+        Assert.Empty(summary);
     }
 }
