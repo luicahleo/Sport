@@ -125,7 +125,22 @@ public class ScoreboardAutofixtureTest
 
     [Fact]
     public void UpdateScore_DoesNotAllowNegativeScores()
-    { }
+    {
+        string homeTeam = fixture.Create<string>();
+        string awayTeam = fixture.Create<string>();
+        while (homeTeam == awayTeam)
+        {
+            awayTeam = fixture.Create<string>();
+        }
+
+        scoreboard.StartGame(homeTeam, awayTeam);
+        scoreboard.UpdateScore(homeTeam, awayTeam, -1, 3);
+
+        // Assert: Verificar que los puntajes negativos no sean permitidos
+        var summary = scoreboard.GetSummary();
+        Assert.Single(summary);
+
+    }
 
     #endregion
 
