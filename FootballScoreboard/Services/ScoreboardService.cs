@@ -41,7 +41,16 @@ namespace FootballScoreboard.Services
 
         public void UpdateScore(string homeTeam, string awayTeam, int newHomeScore, int newAwayScore)
         {
-            throw new NotImplementedException();
+            var game = gameRepository.GetAllGames()
+                         .FirstOrDefault(g => g.HomeTeam == homeTeam && g.AwayTeam == awayTeam);
+
+            if (game != null)
+            {
+                int validHomeScore = newHomeScore < 0 ? 0 : newHomeScore;
+                int validAwayScore = newAwayScore < 0 ? 0 : newAwayScore;
+
+                game.UpdateScore(newHomeScore, newAwayScore);
+            }
         }
     }
 }

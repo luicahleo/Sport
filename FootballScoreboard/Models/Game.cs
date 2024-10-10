@@ -20,5 +20,12 @@ namespace FootballScoreboard.Models
             HomeScore = 0;
             AwayScore = 0;
         }
+
+        internal void UpdateScore(int newHomeScore, int newAwayScore)
+        {
+            HomeScore = newHomeScore < 0 ? 0 : newHomeScore;
+            AwayScore = newAwayScore < 0 ? 0 : newAwayScore;
+
+        }
     }
 }
