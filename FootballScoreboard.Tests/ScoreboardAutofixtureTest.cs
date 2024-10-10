@@ -119,7 +119,8 @@ public class ScoreboardAutofixtureTest
         // Assert: Verificamos que el marcador se haya actualizado correctamente
         var summary = scoreboard.GetSummary();          
         Assert.Single(summary);
-
+        Assert.Equal(newHomeScore, summary[0].HomeScore);
+        Assert.Equal(newAwayScore, summary[0].AwayScore);
     }
     #endregion
 
