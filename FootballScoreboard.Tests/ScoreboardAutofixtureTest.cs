@@ -64,4 +64,12 @@ public class ScoreboardAutofixtureTest
         var summary = scoreboard.GetSummary();
         Assert.Empty(summary);
     }
+
+    [Fact]
+    public void FinishGame_GameDoesNotExist_NoChangesToScoreboard()
+    {
+        string homeTeam = fixture.Create<string>();
+        string awayTeam = fixture.Create<string>();
+        scoreboard.StartGame(homeTeam, awayTeam);
+    }
 }
