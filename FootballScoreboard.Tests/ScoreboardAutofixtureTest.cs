@@ -92,8 +92,19 @@ public class ScoreboardAutofixtureTest
 
         // Assert: Verificar que el juego original sigue existiendo
         var summary = scoreboard.GetSummary();
-        Assert.Single(summary); 
+        Assert.Single(summary);
         Assert.Equal(homeTeam, summary[0].HomeTeam);
         Assert.Equal(awayTeam, summary[0].AwayTeam);
     }
+
+    #region UpdateScore
+
+    [Fact]
+    public void UpdateScore_UpdatesScoreCorrectly()
+    {
+    }
+    #endregion
+
+
+
 }
