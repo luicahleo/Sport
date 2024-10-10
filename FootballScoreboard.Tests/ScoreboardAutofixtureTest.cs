@@ -147,13 +147,56 @@ public class ScoreboardAutofixtureTest
     #region Example of System
     [Fact]
     public void GetSummary_ReturnsGamesOrderedByTotalScoreAndMostRecent()
-    { 
-    
+    {
+
+        scoreboard.StartGame("Mexico", "Canada");
+        scoreboard.UpdateScore("Mexico", "Canada", 0, 5);
+
+        scoreboard.StartGame("Spain", "Brazil");
+        scoreboard.UpdateScore("Spain", "Brazil", 10, 2);
+
+        scoreboard.StartGame("Germany", "France");
+        scoreboard.UpdateScore("Germany", "France", 2, 2);
+
+        scoreboard.StartGame("Uruguay", "Italy");
+        scoreboard.UpdateScore("Uruguay", "Italy", 6, 6);
+
+        scoreboard.StartGame("Argentina", "Australia");
+        scoreboard.UpdateScore("Argentina", "Australia", 3, 1);
+
+        var summary = scoreboard.GetSummary();
+
+        // Assert: El orden tiene que estar como en Example, siguiendo el orden de suma de marcadores asc
+        Assert.Equal("Uruguay", summary[0].HomeTeam);
+        Assert.Equal("Italy", summary[0].AwayTeam);
+        Assert.Equal(6, summary[0].HomeScore);
+        Assert.Equal(6, summary[0].AwayScore);
+
+        Assert.Equal("Spain", summary[1].HomeTeam);
+        Assert.Equal("Brazil", summary[1].AwayTeam);
+        Assert.Equal(10, summary[1].HomeScore);
+        Assert.Equal(2, summary[1].AwayScore);
+
+        Assert.Equal("Mexico", summary[2].HomeTeam);
+        Assert.Equal("Canada", summary[2].AwayTeam);
+        Assert.Equal(0, summary[2].HomeScore);
+        Assert.Equal(5, summary[2].AwayScore);
+
+        Assert.Equal("Argentina", summary[3].HomeTeam);
+        Assert.Equal("Australia", summary[3].AwayTeam);
+        Assert.Equal(3, summary[3].HomeScore);
+        Assert.Equal(1, summary[3].AwayScore);
+
+        Assert.Equal("Germany", summary[4].HomeTeam);
+        Assert.Equal("France", summary[4].AwayTeam);
+        Assert.Equal(2, summary[4].HomeScore);
+        Assert.Equal(2, summary[4].AwayScore);
+
     }
 
 
 
-        #endregion
+    #endregion
 
 
-    }
+}
