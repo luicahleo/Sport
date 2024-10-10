@@ -12,6 +12,6 @@ namespace FootballScoreboard.Repositories.Interfaces
     {
         void AddGame(Game game);
         List<Game> GetAllGames();
-
+        void RemoveGame(Game game);
     }
 }

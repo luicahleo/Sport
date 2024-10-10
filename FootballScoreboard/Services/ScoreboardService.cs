@@ -21,7 +21,15 @@ namespace FootballScoreboard.Services
 
         public void FinishGame(string homeTeam, string awayTeam)
         {
-            
+            var games = gameRepository.GetAllGames();
+            foreach (var game in games)
+            {
+                if (game.HomeTeam == homeTeam && game.AwayTeam == awayTeam)
+                {
+                    gameRepository.RemoveGame(game);
+                }
+                break;
+            }
         }
 
         public List<Game> GetSummary()

@@ -22,5 +22,10 @@ namespace FootballScoreboard.Repositories
         {
             return games;
         }
+
+        public void RemoveGame(Game game)
+        {
+            games.Remove(game);
+        }
     }
 }
