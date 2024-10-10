@@ -144,6 +144,16 @@ public class ScoreboardAutofixtureTest
 
     #endregion
 
+    #region Example of System
+    [Fact]
+    public void GetSummary_ReturnsGamesOrderedByTotalScoreAndMostRecent()
+    { 
+    
+    }
 
 
-}
+
+        #endregion
+
+
+    }
