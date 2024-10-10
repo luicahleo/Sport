@@ -112,16 +112,21 @@ public class ScoreboardAutofixtureTest
 
         scoreboard.StartGame(homeTeam, awayTeam);
 
-        int newHomeScore = 1; 
+        int newHomeScore = 1;
         int newAwayScore = 2;
         scoreboard.UpdateScore(homeTeam, awayTeam, newHomeScore, newAwayScore);
 
         // Assert: Verificamos que el marcador se haya actualizado correctamente
-        var summary = scoreboard.GetSummary();          
+        var summary = scoreboard.GetSummary();
         Assert.Single(summary);
         Assert.Equal(newHomeScore, summary[0].HomeScore);
         Assert.Equal(newAwayScore, summary[0].AwayScore);
     }
+
+    [Fact]
+    public void UpdateScore_DoesNotAllowNegativeScores()
+    { }
+
     #endregion
 
 
