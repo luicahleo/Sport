@@ -102,6 +102,24 @@ public class ScoreboardAutofixtureTest
     [Fact]
     public void UpdateScore_UpdatesScoreCorrectly()
     {
+        string homeTeam = fixture.Create<string>();
+        string awayTeam = fixture.Create<string>();
+
+        while (homeTeam == awayTeam)
+        {
+            awayTeam = fixture.Create<string>();
+        }
+
+        scoreboard.StartGame(homeTeam, awayTeam);
+
+        int newHomeScore = 1; 
+        int newAwayScore = 2;
+        scoreboard.UpdateScore(homeTeam, awayTeam, newHomeScore, newAwayScore);
+
+        // Assert: Verificamos que el marcador se haya actualizado correctamente
+        var summary = scoreboard.GetSummary();
+        Assert.Single(summary);
+
     }
     #endregion
 

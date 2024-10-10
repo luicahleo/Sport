@@ -13,6 +13,6 @@ namespace FootballScoreboard.Services.Interfaces
         void StartGame(string homeTeam, string awayTeam);
         void FinishGame(string homeTeam, string awayTeam);
         List<Game> GetSummary();
-
+        void UpdateScore(string homeTeam, string awayTeam, int newHomeScore, int newAwayScore);
     }
 }

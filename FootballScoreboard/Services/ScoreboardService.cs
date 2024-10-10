@@ -38,5 +38,10 @@ namespace FootballScoreboard.Services
 
             return gameRepository.GetAllGames();
         }
+
+        public void UpdateScore(string homeTeam, string awayTeam, int newHomeScore, int newAwayScore)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
