@@ -56,6 +56,10 @@ public class ScoreboardAutofixtureTest
         string homeTeam = fixture.Create<string>();
         string awayTeam = fixture.Create<string>();
 
+        while (homeTeam == awayTeam)
+        {
+            awayTeam = fixture.Create<string>();
+        }
         //Iniciamos y luego lo finalizamos
         scoreboard.StartGame(homeTeam, awayTeam);
         scoreboard.FinishGame(homeTeam, awayTeam);
@@ -70,6 +74,26 @@ public class ScoreboardAutofixtureTest
     {
         string homeTeam = fixture.Create<string>();
         string awayTeam = fixture.Create<string>();
+
+        while (homeTeam == awayTeam)
+        {
+            awayTeam = fixture.Create<string>();
+        }
         scoreboard.StartGame(homeTeam, awayTeam);
+
+        string nonExistentHomeTeam = fixture.Create<string>();
+        string nonExistentAwayTeam = fixture.Create<string>();
+
+        while (nonExistentHomeTeam == nonExistentAwayTeam)
+        {
+            nonExistentAwayTeam = fixture.Create<string>();
+        }
+        scoreboard.FinishGame(nonExistentHomeTeam, nonExistentAwayTeam);
+
+        // Assert: Verificar que el juego original sigue existiendo
+        var summary = scoreboard.GetSummary();
+        Assert.Single(summary); 
+        Assert.Equal(homeTeam, summary[0].HomeTeam);
+        Assert.Equal(awayTeam, summary[0].AwayTeam);
     }
 }
