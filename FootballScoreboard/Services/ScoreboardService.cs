@@ -45,14 +45,17 @@ namespace FootballScoreboard.Services
 
                 if (totalScore1 == totalScore2)
                 {
+                    // Si los marcadores son iguales, ordenamos por fecha de inicio
                     return game2.StartTime.CompareTo(game1.StartTime); 
                 }
 
+                // Devolvemos el mayor marcador
                 return totalScore2.CompareTo(totalScore1); 
             });
 
             return sortedGames;
         }
+
 
         public void UpdateScore(string homeTeam, string awayTeam, int newHomeScore, int newAwayScore)
         {

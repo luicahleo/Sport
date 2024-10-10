@@ -20,6 +20,7 @@ namespace FootballScoreboard.Models
             AwayTeam = awayTeam;
             HomeScore = 0;
             AwayScore = 0;
+            StartTime = DateTime.Now;
         }
 
         internal void UpdateScore(int newHomeScore, int newAwayScore)
