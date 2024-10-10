@@ -34,9 +34,24 @@ namespace FootballScoreboard.Services
 
         public List<Game> GetSummary()
         {
+            var games = gameRepository.GetAllGames();
 
+            var sortedGames = new List<Game>(games);
 
-            return gameRepository.GetAllGames();
+            sortedGames.Sort((game1, game2) =>
+            {
+                int totalScore1 = game1.TotalScore();
+                int totalScore2 = game2.TotalScore();
+
+                if (totalScore1 == totalScore2)
+                {
+                    return game2.StartTime.CompareTo(game1.StartTime); 
+                }
+
+                return totalScore2.CompareTo(totalScore1); 
+            });
+
+            return sortedGames;
         }
 
         public void UpdateScore(string homeTeam, string awayTeam, int newHomeScore, int newAwayScore)

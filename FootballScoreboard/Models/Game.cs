@@ -12,6 +12,7 @@ namespace FootballScoreboard.Models
         public string AwayTeam { get; }
         public int HomeScore { get; private set; }
         public int AwayScore { get; private set; }
+        public DateTime StartTime { get; }
 
         public Game(string homeTeam, string awayTeam)
         {
@@ -26,6 +27,11 @@ namespace FootballScoreboard.Models
             HomeScore = newHomeScore < 0 ? 0 : newHomeScore;
             AwayScore = newAwayScore < 0 ? 0 : newAwayScore;
 
+        }
+
+        internal int TotalScore()
+        {
+            return HomeScore + AwayScore;
         }
     }
 }
