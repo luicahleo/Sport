@@ -49,4 +49,9 @@ public class ScoreboardAutofixtureTest
         Assert.Equal(0, summary[0].HomeScore);
         Assert.Equal(0, summary[0].AwayScore);
     }
+
+    [Fact]
+    public void FinishGame_RemovesGameFromScoreboard()
+    {
+    }
 }
